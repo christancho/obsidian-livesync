@@ -1,6 +1,6 @@
 services:
   couchdb:
-    image: couchdb:3.3
+    image: couchdb:3.5
     container_name: obsidian-livesync
     restart: unless-stopped
     ports:
