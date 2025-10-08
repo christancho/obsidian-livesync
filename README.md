@@ -6,7 +6,7 @@ This repository contains a Docker Compose configuration to deploy CouchDB for us
 
 1. **Clone and setup environment:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/christancho/obsidian-livesync.git
    cd obsidian-live-sync
    cp env.example .env
    ```
@@ -173,5 +173,3 @@ For issues related to:
 - **Docker setup**: Check Docker and Docker Compose documentation
 - **CouchDB**: Visit [CouchDB documentation](https://docs.couchdb.org/)
 - **Obsidian LiveSync**: Check the [plugin documentation](https://github.com/vrtmrz/obsidian-livesync)
-
-
