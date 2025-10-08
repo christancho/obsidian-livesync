@@ -1,0 +1,30 @@
+services:
+  couchdb:
+    image: couchdb:3.3
+    container_name: obsidian-livesync
+    restart: unless-stopped
+    ports:
+      - "5984:5984"
+    environment:
+      - COUCHDB_USER=${COUCHDB_USER}
+      - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
+      - COUCHDB_SECRET=${COUCHDB_SECRET}
+      - NODENAME=${NODENAME}
+    volumes:
+      - ${LIVESYNC_DIR}/data/couchdb:/opt/couchdb/data
+      - ${LIVESYNC_DIR}/data/couchdb-config:/opt/couchdb/etc/local.d
+      - ${LIVESYNC_DIR}/couchdb/local.ini:/opt/couchdb/etc/local.d/local.ini:ro
+    networks:
+      - obsidian-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5984/"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+networks:
+  obsidian-network:
+    driver: bridge
+
+

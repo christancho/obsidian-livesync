@@ -1,0 +1,6 @@
+# Ignore data directories but keep the structure
+data/couchdb/*
+!data/couchdb/.gitkeep
+data/couchdb-config/*
+!data/couchdb-config/.gitkeep
+
