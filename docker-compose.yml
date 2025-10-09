@@ -9,6 +9,7 @@ services:
       - COUCHDB_USER=${COUCHDB_USER}
       - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
       - COUCHDB_SECRET=${COUCHDB_SECRET}
+      - TZ=${TZ}
     volumes:
       - ${LIVESYNC_DIR}/data/:/opt/couchdb/data
       - ${LIVESYNC_DIR}/config:/opt/couchdb/etc/local.d 
