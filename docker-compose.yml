@@ -9,11 +9,9 @@ services:
       - COUCHDB_USER=${COUCHDB_USER}
       - COUCHDB_PASSWORD=${COUCHDB_PASSWORD}
       - COUCHDB_SECRET=${COUCHDB_SECRET}
-      - NODENAME=${NODENAME}
     volumes:
-      - ${LIVESYNC_DIR}/data/couchdb:/opt/couchdb/data
-      - ${LIVESYNC_DIR}/data/couchdb-config:/opt/couchdb/etc/local.d
-      - ${LIVESYNC_DIR}/couchdb/local.ini:/opt/couchdb/etc/local.d/local.ini:ro
+      - ${LIVESYNC_DIR}/data/:/opt/couchdb/data
+      - ${LIVESYNC_DIR}/config:/opt/couchdb/etc/local.d 
     networks:
       - obsidian-network
     healthcheck:
