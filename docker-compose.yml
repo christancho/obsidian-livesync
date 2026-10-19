@@ -12,11 +12,13 @@ services:
       - TZ=${TZ}
     volumes:
       - ${LIVESYNC_DIR}/data/:/opt/couchdb/data
-      - ${LIVESYNC_DIR}/config:/opt/couchdb/etc/local.d 
+      - ${LIVESYNC_DIR}/config:/opt/couchdb/etc/local.d
     networks:
       - obsidian-network
     healthcheck:
-      test: ["CMD", "curl", "-fs", "http://localhost:5984/_up"]
+      # LiveSync sets require_valid_user=true, so even /_up needs auth.
+      # $$ defers expansion to the container shell (no password in the compose file).
+      test: ["CMD-SHELL", "curl -fs -u \"$${COUCHDB_USER}:$${COUCHDB_PASSWORD}\" http://localhost:5984/_up || exit 1"]
       interval: 30s
       timeout: 5s
       retries: 5
