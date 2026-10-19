@@ -16,9 +16,9 @@ services:
     networks:
       - obsidian-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5984/"]
+      test: ["CMD", "curl", "-fs", "http://localhost:5984/_up"]
       interval: 30s
-      timeout: 10s
+      timeout: 5s
       retries: 5
       start_period: 30s
 
