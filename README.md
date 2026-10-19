@@ -50,7 +50,7 @@ The CouchDB instance is configured with:
 - CORS enabled for web access
 - Single node setup (suitable for personal use)
 - Optimized settings for Obsidian LiveSync
-- Health checks enabled
+- Health checks enabled (authenticated against `/_up`, since LiveSync sets `require_valid_user = true`)
 - **Bind mounts** instead of Docker volumes for easier data management
 - **Portainer compatible** environment variable format
 
